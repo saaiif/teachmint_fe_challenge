@@ -1,10 +1,39 @@
+import React, { lazy, Suspense, useReducer, createContext } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import reducer, { initialState } from "./Context/Reducer";
 import "./styles.css";
 
-export default function App() {
+const UserDetail = lazy(() => import("./Components/UserDetail"));
+const UserDirectory = lazy(() => import("./Components/UserDirectory"));
+
+export const MembersContext = createContext();
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">
+      <Route index={true} exact path="/" element={<UserDirectory />} />
+      <Route index={true} exact path="/user/:userId" element={<UserDetail />} />
+
+      <Route path="*" element={"Not Found"} />
+    </Route>,
+  ),
+);
+
+function App({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div className="App">
-      <h1>Hello Saif</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <MembersContext.Provider value={{ state, dispatch }}>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <RouterProvider router={router} />
+        {children}
+      </Suspense>
+    </MembersContext.Provider>
   );
 }
+
+export default App;
