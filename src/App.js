@@ -1,4 +1,10 @@
-import React, { lazy, Suspense, useReducer, createContext } from "react";
+import React, {
+  lazy,
+  Suspense,
+  useReducer,
+  createContext,
+  useContext,
+} from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -37,3 +43,7 @@ function App({ children }) {
 }
 
 export default App;
+
+export const useMembersContext = () => {
+  return useContext(MembersContext);
+};

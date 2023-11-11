@@ -9,8 +9,55 @@
   justify-content: space-between;
   align-items: center;
   color: #000;
-  background-color: aqua;
+  background-color: #9ccaf8;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  border: 1px solid #000;
+}
+
+/* User Detail CSS */
+.userdetail_topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userdetail_topbar__right {
+  display: flex;
+  align-items: center;
+}
+
+.userdetail_topbar__dropdown {
+  width: 7rem;
+  margin: 0 0.5rem;
+}
+
+.userdetail_topbar__btn {
+  cursor: pointer;
+  background-color: #9fbb73;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem;
+}
+
+.postCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0.5rem;
+}
+
+@media (max-width: 448px) {
+  .postCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+}
+@media (max-width: 290px) {
+  .postCard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  }
 }

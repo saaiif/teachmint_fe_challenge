@@ -1,52 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link, NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, NavLink } from "react-router-dom";
+import { useMembersContext } from "../App";
+import PostCard from "../Profile/PostCard";
+import UserInfo from "../Profile/UserInfo";
+import { fetchUsers, fetchUserPosts } from "../Utils/Helper";
+import "./Style.css";
 
 function UserDetail() {
   const { userId } = useParams();
-  const [user, setUser] = useState({});
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { state, dispatch } = useMembersContext();
+  const { users, posts } = state || {};
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      setLoading(true);
-      try {
-        const userResponse = await fetch(
-          `https://jsonplaceholder.typicode.com/users/${userId}`,
-        );
-        const userData = await userResponse.json();
-        setUser(userData);
-        setLoading(false);
+    if (!users?.length || !posts?.length) {
+      fetchUsers(dispatch);
+      fetchUserPosts(dispatch);
+    }
+  }, []);
 
-        const postsResponse = await fetch(
-          `https://jsonplaceholder.typicode.com/posts?userId=${userId}`,
-        );
-        const postsData = await postsResponse.json();
-        setPosts(postsData);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, [userId]);
-console.log(posts,"posts");
   return (
-    <div>
-      <NavLink to="/">Back to User Directory</NavLink>
-      {loading ? (
-        <h1>Loading..</h1>
-      ) : (
-        <>
-          <h1>{user.name}</h1>
-          <div>{/* Display user details */}</div>
-          <div>
-            {/* Clock section with pause/start button */}
-            {/* Display posts */}
-          </div>
-        </>
-      )}
+    <div className="userdetail">
+      <div className="userdetail_topbar">
+        <NavLink to="/">Back</NavLink>
+        <div className="userdetail_topbar__right">
+          <select className="userdetail_topbar__dropdown">
+            <option>ACdfdsfsd sdfdghf dfgfsag</option>
+          </select>
+          <span>10:00:00</span>
+          <button className="userdetail_topbar__btn">Start</button>
+        </div>
+      </div>
+      <h3 style={{ textAlign: "center" }}>Profile</h3>
+      <div>
+        <UserInfo users={users} userId={userId} />
+      </div>
+      <h3 style={{ textAlign: "center" }}>Posts</h3>
+      <div className="postCard">
+        {posts?.map((post) => {
+          if (post.userId === Number(userId)) {
+            return <PostCard post={post} userId={userId} />;
+          }
+        })}
+      </div>
     </div>
   );
 }
