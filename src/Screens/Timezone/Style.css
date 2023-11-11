@@ -1,6 +1,6 @@
 .country_dropdown {
   width: 10rem;
-  height: 2rem;
+  height: 2.3rem;
   cursor: pointer;
 }
 
@@ -14,7 +14,7 @@
   line-height: 0.9rem;
   background-color: #000;
   color: #fff;
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 0.6rem;
 }
 
 .clock_display > p {
@@ -23,7 +23,7 @@
   margin: 0px;
 }
 .clock_display > span {
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: center;
   font-weight: bold;
 }

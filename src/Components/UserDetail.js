@@ -24,11 +24,12 @@ function UserDetail() {
   return (
     <div className="userdetail">
       <div className="userdetail_topbar">
-        <NavLink to="/" className="userdetail_topbar__back">Back</NavLink>
+        <NavLink to="/" className="userdetail_topbar__back">
+          Back
+        </NavLink>
         <div className="userdetail_topbar__right">
           <CountryListDropdown countries={country_list} />
           <Clock />
-          
         </div>
       </div>
       <h3 style={{ textAlign: "center" }}>Profile Page</h3>
@@ -38,11 +39,7 @@ function UserDetail() {
       <div className="postCard">
         {posts?.map((post) => {
           if (post.userId === Number(userId)) {
-            return (
-              <React.Fragment key={post?.it}>
-                <PostCard post={post} />
-              </React.Fragment>
-            );
+            return <PostCard post={post} key={post?.id} />;
           }
         })}
       </div>

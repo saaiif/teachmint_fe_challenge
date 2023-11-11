@@ -12,6 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import reducer, { initialState } from "./Context/Reducer";
+import Loader from "./Screens/Loader/Loader";
 import "./styles.css";
 
 const UserDetail = lazy(() => import("./Components/UserDetail"));
@@ -34,7 +35,7 @@ function App({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <MembersContext.Provider value={{ state, dispatch }}>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loader />}>
         <RouterProvider router={router} />
         {children}
       </Suspense>

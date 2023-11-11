@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useMembersContext } from "../../App";
-import { TIME_ZONE } from "../../Utils/Contants";
+import { LOADING, TIME_ZONE } from "../../Utils/Contants";
 import { getCurrentTime } from "../../Utils/Helper";
 import "./Style.css";
 
@@ -16,6 +16,13 @@ function CountryListDropdown({ countries }) {
 
   useEffect(() => {
     getCurrentTime(dispatch, selectedTimeZone);
+    dispatch({
+      type: LOADING,
+      payload: {
+        title: "current time",
+        isLoading: true,
+      },
+    });
   }, [selectedTimeZone]);
 
   return (
@@ -25,7 +32,6 @@ function CountryListDropdown({ countries }) {
         onChange={handleTimeZoneChange}
         className="country_dropdown"
       >
-        {/* <option value="">Select a country</option> */}
         {countries?.map((timeZone) => (
           <option key={timeZone} value={timeZone}>
             {timeZone}

@@ -4,6 +4,7 @@ import {
   COUNTRY_LIST,
   TIME_ZONE,
   CURRENT_TIME,
+  LOADING,
 } from "../Utils/Contants";
 
 export const initialState = {
@@ -12,6 +13,10 @@ export const initialState = {
   country_list: [],
   timezone: null,
   current_time: null,
+  loading: {
+    title: "",
+    isLoading: false,
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +31,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, timezone: action.payload };
     case CURRENT_TIME:
       return { ...state, current_time: action.payload };
+    case LOADING:
+      return { ...state, loading: action.payload };
     default:
       return state;
   }
