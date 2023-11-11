@@ -1,4 +1,5 @@
 import React from "react";
+import Label from "../../Utils/Label";
 import "./Style.css";
 
 function UserInfo({ users, userId }) {
@@ -19,17 +20,22 @@ function UserInfo({ users, userId }) {
   return (
     <div className="userInfo">
       <div className="userInfo_left">
-        <h4>Name: {name}</h4>
         <h4>
-          Username: {userName} | Catch phrase: {catchPhrase}
+          <Label label={"Name"} /> {name}
+        </h4>
+        <h4>
+          <Label label={"Username"} />
+          {userName} | Catch phrase: {catchPhrase}
         </h4>
       </div>
       <div>
         <h4>
-          Address: {street}, {suite}, {city}, {zipcode}.
+          <Label label={"Address"} />
+          {street}, {suite}, {city}, {zipcode}.
         </h4>
         <h4>
-          Phone: {phone} | Email: {email}
+          <Label label={"Phone"} />
+          {phone} | Email: {email}
         </h4>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Label from "../../Utils/Label";
 import PostDetailModal from "./PostDetailModal";
 
 function PostCard({ post }) {
@@ -16,15 +17,26 @@ function PostCard({ post }) {
   return (
     <>
       <div className="postCard__details" onClick={openModal}>
-        <h4>Title: {title}</h4>
-        <h4>Content: {content}</h4>
+        <h4>
+          <Label label={"Title"} /> {title}
+        </h4>
+        <h4>
+          <Label label={"Content"} /> {content}
+        </h4>
       </div>
 
       {isModalOpen && (
         <PostDetailModal isOpen={isModalOpen} onClose={closeModal}>
-          <h3>Id:{userId}</h3>
-          <h4>Title: {title}</h4>
-          <h4>Content: {content}</h4>
+          <h3>
+            <Label label={"Id"} />
+            {userId}
+          </h3>
+          <h4>
+            <Label label={"Title"} /> {title}
+          </h4>
+          <h4>
+            <Label label={"Content"} /> {content}
+          </h4>
         </PostDetailModal>
       )}
     </>
