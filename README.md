@@ -7,7 +7,7 @@ To run this project please follow this steps:
 2. Then run "yarn install" command
 3. And Then "yarn start"
 
-Yeah all set is ready to explore.
+Yeah all set this project is ready to explore.
 
 Thanks TeachMint for this task.
 
