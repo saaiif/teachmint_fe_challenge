@@ -1,0 +1,38 @@
+.country_dropdown {
+  width: 10rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.clock {
+  display: flex;
+  align-self: center;
+}
+
+.clock_display {
+  margin: 0 0.5rem;
+  line-height: 0.9rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+}
+
+.clock_display > p {
+  font-size: 0.6rem;
+  text-align: center;
+  margin: 0px;
+}
+.clock_display > span {
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.clock__btn {
+  cursor: pointer;
+  background-color: #9fbb73;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1.5rem;
+  min-width: 6rem;
+}
