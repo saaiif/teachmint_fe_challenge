@@ -1,4 +1,3 @@
-// UserDirectory.js
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -31,14 +30,14 @@ function UserDirectory() {
   console.log(state);
   return (
     <div>
-      <h1>Directory</h1>
-      {users?.map((user) => (
-        <div key={user.id}>
-          <Link to={`/user/${user.id}`} className="user_directory__Container">
+      <h2 style={{ textAlign: "center" }}>Directory</h2>
+      {users?.map((user, index) => (
+        <Link to={`/user/${user.id}`} className="linkStyle">
+          <div key={user.id} className="user_directory__Container">
             <div>Name: {user.name}</div>
             <div>{`Posts: ${getPostsLength(state?.posts, user?.id)}`}</div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       ))}
     </div>
   );

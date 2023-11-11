@@ -1,7 +1,16 @@
 /* User Directory CSS */
 
-.user_directory__Container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.linkStyle {
+  color: #000;
+}
+
+.user_directory__Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  background-color: aqua;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
